@@ -1,0 +1,121 @@
+/* style.css */
+
+/* Reset dasar untuk semua elemen */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Mengatur tinggi body dan html agar memenuhi viewport dan menggunakan font Arial */
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* Gaya untuk container utama */
+.container {
+    /* Latar belakang gambar 'kelas.jpg', tidak diulang, di tengah, menutupi seluruh area */
+    background: url('kelas.jpg') no-repeat center center/cover;
+    height: 100vh; /* Tinggi penuh viewport */
+    text-align: center; /* Teks di tengah */
+    position: relative;
+    padding-top: 50px; /* Jarak dari atas */
+    color: #fff; /* Warna teks putih */
+    /* Menambahkan overlay gelap agar teks lebih mudah dibaca */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Pusatkan konten secara vertikal */
+    align-items: center; /* Pusatkan konten secara horizontal */
+}
+
+/* Overlay untuk membuat gambar latar belakang lebih gelap */
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Hitam dengan opasitas 50% */
+    z-index: 1; /* Pastikan overlay di bawah konten */
+}
+
+/* Judul utama */
+h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #fff;
+    z-index: 2; /* Pastikan judul di atas overlay */
+    position: relative; /* Penting agar z-index bekerja */
+}
+
+/* Kotak profil */
+.profile-box {
+    background-color: rgba(255, 255, 255, 0.9); /* Latar belakang semi-transparan putih */
+    border-radius: 15px; /* Sudut membulat */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Bayangan lebih kuat */
+    padding: 30px;
+    display: flex; /* Menggunakan flexbox untuk tata letak foto dan info */
+    flex-direction: column; /* Default: susun vertikal untuk mobile */
+    align-items: center; /* Pusatkan item secara horizontal */
+    max-width: 400px; /* Lebar maksimum kotak profil */
+    width: 90%; /* Lebar responsif */
+    z-index: 2; /* Pastikan kotak profil di atas overlay */
+    position: relative; /* Penting agar z-index bekerja */
+    color: #333; /* Warna teks di dalam kotak profil */
+    margin-bottom: 20px; /* Jarak dari footer */
+}
+
+/* Area foto */
+.photo {
+    margin-bottom: 20px; /* Jarak antara foto dan info */
+}
+
+.photo img {
+    width: 150px; /* Lebar foto */
+    height: 150px; /* Tinggi foto */
+    border-radius: 50%; /* Membuat foto bulat */
+    object-fit: cover; /* Memastikan gambar mengisi area tanpa terdistorsi */
+    border: 5px solid #007bff; /* Border biru pada foto */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bayangan pada foto */
+}
+
+/* Area informasi */
+.info p {
+    margin-bottom: 10px; /* Jarak antar paragraf info */
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.info p strong {
+    color: #0056b3; /* Warna biru gelap untuk label */
+}
+
+/* Footer */
+footer {
+    position: relative; /* Penting agar z-index bekerja */
+    z-index: 2; /* Pastikan footer di atas overlay */
+    color: #fff; /* Warna teks footer putih */
+    font-size: 14px;
+    margin-top: 20px; /* Jarak dari profile-box */
+}
+
+/* Responsivitas untuk layar yang lebih lebar */
+@media (min-width: 768px) {
+    .profile-box {
+        flex-direction: row; /* Susun horizontal untuk desktop */
+        max-width: 700px; /* Lebar maksimum lebih besar */
+        padding: 40px;
+    }
+
+    .photo {
+        margin-right: 30px; /* Jarak antara foto dan info di desktop */
+        margin-bottom: 0; /* Hilangkan margin bawah foto di desktop */
+    }
+
+    .info {
+        text-align: left; /* Teks info rata kiri di desktop */
+    }
+}
